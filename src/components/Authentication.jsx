@@ -48,7 +48,8 @@ const Authentication = () => {
         seterrormsg("Invalid Credentials")
       }
     } catch (err) {
-      setMessage("Something went wrong!")
+      seterrormsg
+        ("Something went wrong!")
     }
   }
 
