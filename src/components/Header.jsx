@@ -2,6 +2,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 
 import { useEffect, useState } from "react"
 import { useRef } from "react"
+import { useSelector } from "react-redux"
+
 const Header = ({ customStyle = "bg-gradient-to-r from-black to-red-950" }) => {
   const [Navbar, setNavbar] = useState("hidden")
   const navigate = useNavigate()
@@ -14,6 +16,9 @@ const Header = ({ customStyle = "bg-gradient-to-r from-black to-red-950" }) => {
       setNavbar("hidden")
     }, 5000)
   }
+
+  const name = useSelector((store) => store.userInfo.name)
+
   useEffect(() => {
     ref.current.scrollIntoView({ behavior: "smooth" })
   }, [location.pathname, navigate])
@@ -106,7 +111,7 @@ const Header = ({ customStyle = "bg-gradient-to-r from-black to-red-950" }) => {
           showNavbar()
         }}
       >
-        Manish Kumar
+        {name ? name.toUpperCase() : "User"}
       </div>
     </div>
   )
