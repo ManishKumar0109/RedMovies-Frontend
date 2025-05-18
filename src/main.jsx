@@ -98,7 +98,12 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFoundPage />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header />
+        <MainPage />
+      </Suspense>
+    ),
   },
 ])
 
